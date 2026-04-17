@@ -1,35 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+/>
+<title></title>
+<style>
+.barra {
+width: 300px;
+border: 1px solid;
+width: 0%;
+height: 20px;
+background: darkgreen;
+}
+.resultado {
+border: 1px solid;
+}
+</style>
 </head>
 <body>
-    <div id="barra exterior"></div>
-    <div id="barra interior"></div>
-    <p id="resultado"></p>
-    <button id="iniciar">Iniciar</button>
+<header>
+<div id="progreso" class="resultado">
+<div id="barra" class="barra"></div>
+</div>
+<p id="resultado"></p>
+<button id="boton">Iniciar</button>
+<button id="parar">Parar</button>
+</header>
+<script>
+let boton = document.getElementById("boton");
+let pararBarra = document.getElementById("parar");
+let progreso = 0;
+const barra = document.getElementById("barra");
+let intervalo = null;
+boton.addEventListener("click", iniciar);
+function iniciar() {
+resultado.innerHTML = null;
+progreso = 0;
+clearInterval(intervalo);
+intervalo = setInterval(function () {
+progreso = progreso + 1;
+barra.style.width = progreso + "%";
+if (progreso >= 100) {
+clearInterval(intervalo);
+resultado.innerHTML = "¡Completado!";
+
+}
+}, 100);
+}
+pararBarra.addEventListener("click", parar);
+function parar() {
+clearInterval(intervalo);
+progreso = 0;
+barra.style.width = progreso;
+}
+</script>
 </body>
 </html>
-
-<Script>
-    let progreso = 0
-let intervalo = null
-const barra = document.getElementById("barra")
-    const boton = document.getElementById("iniciar");
-
-    boton.addEventListener("click", iniciar)
-function iniciar() {
-  progreso = 0
-  clearInterval(intervalo)
-  intervalo = setInterval(function() {
-    progreso = progreso + 1
-    barra.style.width = progreso + "%"
-    if (progreso >= 100) {
-      clearInterval(intervalo)
-      resultado.innerHTML = "¡Completado!"
-    }
-  }, 100)
-}
-</Script>

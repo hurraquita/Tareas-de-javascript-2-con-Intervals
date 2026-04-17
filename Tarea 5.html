@@ -1,11 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+/>
+<title>Ejercicio 5 Interval</title>
 </head>
 <body>
-    
+<header>
+<p id="mostrar"></p>
+<p id="resultado"></p>
+<button id="boton">Iniciar</button>
+<button id="parar">Parar</button>
+</header>
+<script>
+let boton = document.getElementById("boton");
+let pararNumero = document.getElementById("parar");
+let resultado = document.getElementById("resultado");
+let numeroActual = 1;
+let intervalo = null;
+const mostrar = document.getElementById("mostrar");
+boton.addEventListener("click", jugar);
+function jugar() {
+intervalo = setInterval(function () {
+numeroActual = Math.floor(Math.random() * 10) + 1;
+mostrar.innerHTML = numeroActual;
+}, 200);
+}
+
+pararNumero.addEventListener("click", parar);
+function parar() {
+clearInterval(intervalo);
+if (numeroActual === 7) {
+resultado.innerHTML = "Ganaste...";
+} else {
+resultado.innerHTML =
+"Era el " + numeroActual + ", perdedora.";
+}
+}
+
+</script>
 </body>
 </html>
