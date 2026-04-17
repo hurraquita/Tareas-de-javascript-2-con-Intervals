@@ -6,6 +6,30 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div id="barra exterior"></div>
+    <div id="barra interior"></div>
+    <p id="resultado"></p>
+    <button id="iniciar">Iniciar</button>
 </body>
 </html>
+
+<Script>
+    let progreso = 0
+let intervalo = null
+const barra = document.getElementById("barra")
+    const boton = document.getElementById("iniciar");
+
+    boton.addEventListener("click", iniciar)
+function iniciar() {
+  progreso = 0
+  clearInterval(intervalo)
+  intervalo = setInterval(function() {
+    progreso = progreso + 1
+    barra.style.width = progreso + "%"
+    if (progreso >= 100) {
+      clearInterval(intervalo)
+      resultado.innerHTML = "¡Completado!"
+    }
+  }, 100)
+}
+</Script>

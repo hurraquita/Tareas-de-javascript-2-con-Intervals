@@ -6,6 +6,32 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <p id="resultado">Visbilidad</p>
+    <button id="iniciar">Iniciar</button>
+    <button id="parar">Parar</button>
 </body>
 </html>
+
+<script>
+    const boton = document.getElementById("iniciar");
+    const boton2 = document.getElementById("parar");
+    let visible = false
+let intervalo = null
+
+boton.addEventListener("click", iniciar)
+function iniciar(){
+intervalo = setInterval(function() {
+  visible = !visible
+  if (visible) {
+    resultado.style.visibility = "visible"
+  } else {
+    resultado.style.visibility = "hidden"
+  }
+}, 500) 
+}
+boton2.addEventListener("click", parar)
+function parar(){
+clearInterval(intervalo);
+
+}
+</script>

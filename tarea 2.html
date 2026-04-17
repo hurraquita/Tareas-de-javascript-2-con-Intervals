@@ -6,11 +6,24 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <p id="resultado">10</p>
+        <button id="iniciar">Iniciar</button>
+
 </body>
 <script>
-    let cuenta = 10
-let intervalo = null
-
+const boton = document.getElementById("iniciar");
+let cuenta = 10
+let interval = null
+boton.addEventListener("click", iniciar)
+function iniciar() {
+  interval = setInterval(function() {
+    cuenta = cuenta - 1
+    resultado.innerHTML = cuenta
+    if (cuenta === 0) {
+      clearInterval(interval)
+      resultado.innerHTML = "¡Tiempo!"
+    }
+  }, 1000)
+}
 </script>
 </html>
